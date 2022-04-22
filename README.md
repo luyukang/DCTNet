@@ -71,7 +71,7 @@ Models with "*" are traditional methods, MGAN and FSNet are trained and finetune
 
 ### DAVIS + DAVSOD 
 
-PCSA and TENet are trained and finetuned on the DAVIS and FBMS. The comparison result is below. Download the trained model from [Baidu Driver]()
+SSAV，PCSA and TENet are trained and finetuned on the DAVIS and DAVSOD. The comparison result is below. Download the trained model from [Baidu Driver]()
 
 | Datasets    | Metrics   | MSTM* | STBP* | SFLR* | SCOM* | SSAV  | PCSA  | TENet | Ours      |
 | ----------- | :-------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | --------- |
