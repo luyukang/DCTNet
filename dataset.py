@@ -29,11 +29,11 @@ class Dataset(data.Dataset):
         for (i, dataset) in enumerate(datasets):
 
             if mode == 'train':
-                data_dir = 'E:/videodataset-train/{}'.format(dataset)
+                data_dir = './dataset/train/{}'.format(dataset)
                 imgset_path = data_dir + '/train.txt'
 
             else:
-                data_dir = 'E:/videodataset-test/{}'.format(dataset)
+                data_dir = './dataset/test/{}'.format(dataset)
                 imgset_path = data_dir + '/test.txt'
 
             imgset_file = open(imgset_path)

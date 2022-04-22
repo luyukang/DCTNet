@@ -10,7 +10,6 @@ import numpy as np
 import cv2
 import IOU
 import datetime
-import visdom
 
 p = OrderedDict()
 p['lr_bone'] = 1e-4  # Learning rate
@@ -137,7 +136,6 @@ class Solver(object):
     def pretrainrgb(self):
 
         iter_num = len(self.train_loader)
-        vis = visdom.Visdom(env='Spatial')
         for epoch in range(self.config.epoch):
             loss_all = 0
             self.optimizer_bone.param_groups[0]['lr'] = p['lr_bone']
@@ -176,9 +174,6 @@ class Solver(object):
 
                     print('Learning rate: ' + str(self.optimizer_bone.param_groups[0]['lr']))
 
-                if i % 50 == 0:
-                    vis.images(torch.sigmoid(decoder_out1), win='predict.jpg', opts=dict(title='predict.jpg'))
-                    vis.images(label, win='sal-target.jpg', opts=dict(title='sal-target.jpg'))
 
             if (epoch + 1) % self.config.epoch_save == 0:
                 torch.save(self.net_bone.state_dict(),
@@ -193,7 +188,6 @@ class Solver(object):
     def pretrainflow(self):
 
         iter_num = len(self.train_loader)
-        vis = visdom.Visdom(env='Flow')
         for epoch in range(self.config.epoch):
             loss_all = 0
             self.optimizer_bone.param_groups[0]['lr'] = p['lr_bone']
@@ -232,9 +226,6 @@ class Solver(object):
 
                     print('Learning rate: ' + str(self.optimizer_bone.param_groups[0]['lr']))
 
-                if i % 50 == 0:
-                    vis.images(torch.sigmoid(decoder_out1), win='predict.jpg', opts=dict(title='predict.jpg'))
-                    vis.images(label, win='sal-target.jpg', opts=dict(title='sal-target.jpg'))
 
             if (epoch + 1) % self.config.epoch_save == 0:
                 torch.save(self.net_bone.state_dict(),
@@ -249,7 +240,6 @@ class Solver(object):
     def pretraindepth(self):
 
         iter_num = len(self.train_loader)
-        vis = visdom.Visdom(env='Depth')
         for epoch in range(self.config.epoch):
             loss_all = 0
             self.optimizer_bone.param_groups[0]['lr'] = p['lr_bone']
@@ -288,9 +278,6 @@ class Solver(object):
 
                     print('Learning rate: ' + str(self.optimizer_bone.param_groups[0]['lr']))
 
-                if i % 50 == 0:
-                    vis.images(torch.sigmoid(decoder_out1), win='predict.jpg', opts=dict(title='predict.jpg'))
-                    vis.images(label, win='sal-target.jpg', opts=dict(title='sal-target.jpg'))
 
             if (epoch + 1) % self.config.epoch_save == 0:
                 torch.save(self.net_bone.state_dict(),
@@ -305,7 +292,6 @@ class Solver(object):
     def train_distributed(self):
         self.optimizer_bone.zero_grad()
         iter_num = len(self.train_loader)
-        vis = visdom.Visdom(env='train')
         for epoch in range(self.config.epoch):
             loss_all = 0
             self.optimizer_bone.param_groups[0]['lr'] = p['lr_bone']
@@ -350,9 +336,6 @@ class Solver(object):
 
                     print('Learning rate: ' + str(self.optimizer_bone.param_groups[0]['lr']))
 
-                if i % 50 == 0 and self.config.local_rank == 0:
-                    vis.images(torch.sigmoid(decoder_out1), win='predict.jpg', opts=dict(title='predict.jpg'))
-                    vis.images(label, win='sal-target.jpg', opts=dict(title='sal-target.jpg'))
 
             if (epoch + 1) % self.config.epoch_save == 0 and self.config.local_rank == 0:
                 torch.save(self.net_bone.state_dict(),
