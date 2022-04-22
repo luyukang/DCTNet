@@ -97,3 +97,7 @@ SSAV，PCSA and TENet are trained and finetuned on the DAVIS and DAVSOD. The com
 
 1. The saliency maps can be download from [Baidu Driver](https://pan.baidu.com/s/10i5ADy4iSSwydy04Enf27w) (PSW: wfqc)
 2. Evaluation Toolbox: We use the standard evaluation toolbox from [DAVSOD benchmark](https://github.com/DengPingFan/DAVSOD).
+
+## A new RGB-D VSOD dataset (with realistic depth):
+
+We have constructed a new RGB-D VSOD dataset, whose depth is realistic, rather synthesized....
