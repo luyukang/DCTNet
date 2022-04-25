@@ -19,7 +19,7 @@ This repository provides PyTorch code implementation for DCTNet: Depth-Cooperate
 #### Pretrain RGB, Flow and Depth streams
 
 1. Download the pre_trained ResNet34 [backbone](https://download.pytorch.org/models/resnet34-333f7ec4.pth) to './model/resnet/pre_train/'.
-2. Download the train dataset (containing DAVIS16, DAVSOD, FBMS and DUTS-TR) from [Baidu Driver]() (PSW: ) and save it at './dataset/train/*'. 
+2. Download the train dataset (containing DAVIS16, DAVSOD, FBMS and DUTS-TR) from [Baidu Driver](https://pan.baidu.com/s/1mVtAWJS0eC690nPXav2lwg) (PSW: 7yer) and save it at './dataset/train/*'. 
 3. Following the the instruction of [RAFT](https://github.com/princeton-vl/RAFT) to prepare the optical flow and the instruction of [DPT](https://github.com/isl-org/DPT) to prepare the synthetic depth map.
 4. Organize each dataset according to the organization format in the './dataset/train/DAVIS/'.
 5. Our pretraining pipeline consists of three steps:
@@ -71,7 +71,7 @@ Models with "*" are traditional methods, MGAN and FSNet are trained and finetune
 
 ### DAVIS + DAVSOD 
 
-SSAV，PCSA and TENet are trained and finetuned on the DAVIS and DAVSOD. The comparison result is below. Download the trained model from [Baidu Driver]()
+SSAV，PCSA and TENet are trained and finetuned on the DAVIS and DAVSOD. The comparison result is below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12Q3W56g3_F7REiKBsMgWGg) (PSW: srwu)
 
 | Datasets    | Metrics   | MSTM* | STBP* | SFLR* | SCOM* | SSAV  | PCSA  | TENet | Ours      |
 | ----------- | :-------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | --------- |
