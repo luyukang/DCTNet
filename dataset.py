@@ -46,7 +46,6 @@ class Dataset(data.Dataset):
                 data['gt_path'] = data_dir + gt_path
                 if dataset == 'DUTS-TR':
                     data['split'] = dataset
-                    data['depth_path'] = data_dir + line.strip("\n").split(" ")[2]
                 else:
                     data['flow_path'] = data_dir + line.strip("\n").split(" ")[2]
                     data['depth_path'] = data_dir + line.strip("\n").split(" ")[3]
@@ -61,11 +60,11 @@ class Dataset(data.Dataset):
             '{} does not exist'.format(self.datas_id[item]['img_path']))
         assert os.path.exists(self.datas_id[item]['gt_path']), (
             '{} does not exist'.format(self.datas_id[item]['gt_path']))
-        assert os.path.exists(self.datas_id[item]['depth_path']), (
-            '{} does not exist'.format(self.datas_id[item]['depth_path']))
         if self.datas_id[item]['dataset'] == 'DUTS-TR':
             pass
         else:
+            assert os.path.exists(self.datas_id[item]['depth_path']), (
+                '{} does not exist'.format(self.datas_id[item]['depth_path']))
             assert os.path.exists(self.datas_id[item]['flow_path']), (
                 '{} does not exist'.format(self.datas_id[item]['flow_path']))
 
