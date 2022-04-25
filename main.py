@@ -21,7 +21,7 @@ def main(config):
         transform.ToTensor()])
 
     if config.mode == 'pretrain_rgb':
-        dataset = Dataset(datasets=['DAVIS', 'DAVSOD', 'DUTS-TR'], transform=composed_transforms_tr, mode='train')
+        dataset = Dataset(datasets=['DAVIS', 'DAVSOD', 'FBMS', 'DUTS-TR'], transform=composed_transforms_tr, mode='train')
         train_loader = data.DataLoader(dataset, batch_size=config.batch_size, num_workers=config.num_thread,
                                        drop_last=True, shuffle=True)
 
@@ -32,7 +32,7 @@ def main(config):
         train.pretrainrgb()
 
     elif config.mode == 'pretrain_flow':
-        dataset = Dataset(datasets=['DAVIS', 'DAVSOD'], transform=composed_transforms_tr, mode='train')
+        dataset = Dataset(datasets=['DAVIS', 'DAVSOD', 'FBMS'], transform=composed_transforms_tr, mode='train')
         train_loader = data.DataLoader(dataset, batch_size=config.batch_size, num_workers=config.num_thread,
                                        drop_last=True, shuffle=True)
 
@@ -43,7 +43,7 @@ def main(config):
         train.pretrainflow()
 
     elif config.mode == 'pretrain_depth':
-        dataset = Dataset(datasets=['DAVIS', 'DAVSOD'], transform=composed_transforms_tr, mode='train')
+        dataset = Dataset(datasets=['DAVIS', 'DAVSOD', 'FBMS'], transform=composed_transforms_tr, mode='train')
         train_loader = data.DataLoader(dataset, batch_size=config.batch_size, num_workers=config.num_thread,
                                        drop_last=True, shuffle=True)
 
@@ -58,7 +58,7 @@ def main(config):
         world_size = int(os.environ['WORLD_SIZE'])
         print("world size", world_size)
         dist.init_process_group(backend='nccl')
-        dataset_train = Dataset(datasets=['DAVIS', 'DAVSOD'], transform=composed_transforms_tr, mode='train')
+        dataset_train = Dataset(datasets=['DAVIS', 'DAVSOD', 'FBMS'], transform=composed_transforms_tr, mode='train')
         datasampler = torch.utils.data.distributed.DistributedSampler(dataset_train, num_replicas=dist.get_world_size(),
                                                                       rank=config.local_rank, shuffle=True)
         train_loader = torch.utils.data.DataLoader(dataset_train, batch_size=config.batch_size, sampler=datasampler,
