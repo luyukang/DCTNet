@@ -78,7 +78,7 @@ class Depth(nn.Module):
                 m.weight.data.fill_(1)
                 m.bias.data.zero_()
 
-        if mode == 'pretrain_rgb':
+        if mode == 'pretrain_depth':
             self.depth_bkbone.backbone_features._load_pretrained_model('./model/resnet/pre_train/resnet34-333f7ec4.pth')
 
     def forward(self, depth):
