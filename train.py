@@ -80,7 +80,7 @@ if __name__ == '__main__':
         transform.FixedResize(size=(config.input_size, config.input_size)),
         transform.Normalize(mean=(0.485, 0.456, 0.406), std=(0.229, 0.224, 0.225)),
         transform.ToTensor()])
-    dataset_train = Dataset(datasets=['FBMS', 'DAVIS-TRAIN', 'DAVSOD'], transform=composed_transforms_ts, mode='train')
+    dataset_train = Dataset(datasets=['FBMS', 'DAVIS', 'DAVSOD'], transform=composed_transforms_ts, mode='train')
     datasampler = torch.utils.data.distributed.DistributedSampler(dataset_train, num_replicas=dist.get_world_size(),
                                                                   rank=args.local_rank, shuffle=True)
     dataloader = torch.utils.data.DataLoader(dataset_train, batch_size=config.batch_size, sampler=datasampler,
