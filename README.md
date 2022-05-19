@@ -20,33 +20,23 @@ This repository provides PyTorch code implementation for DCTNet: Depth-Cooperate
 2. Download the train dataset (containing DAVIS16, DAVSOD, FBMS and DUTS-TR) from [Baidu Driver](https://pan.baidu.com/s/1mVtAWJS0eC690nPXav2lwg) (PSW: 7yer) and save it at './dataset/train/*'. 
 3. Following instructions of [RAFT](https://github.com/princeton-vl/RAFT) to prepare the optical flow and instructions of [DPT](https://github.com/isl-org/DPT) to prepare the synthetic depth map.(Both optical flow map and synthetic depth map are also available from our dataset link)
 4. Download pre_trained RGB, depth and flow stream models from [Baidu Driver](https://pan.baidu.com/s/1HptTP81LXANJ9W0Lu3XCQA) (PSW: 8lux) to './checkpoints/'.
-5. Last, the training of entire DCTNet is implemented on two NVIDIA TiTAN X GPUs. 
+5. The training of entire DCTNet is implemented on two NVIDIA TiTAN X GPUs. 
    - run `CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 train.py` in terminal
 
 #### (PS: For pretraining different streams)
-   - The train the RGB stream model using the combination of static SOD dataset (i.e., DUTS)  and VSOD datasets (i.e., DAVIS16 & FBMS & DAVSOD).
-     - Set `--mode='pretrain_rgb'` and run `python main.py` in terminal
-   - Second, train the Flow stream model using the optical flow map of VSOD datasets (i.e., DAVIS16 & FBMS & DAVSOD).
-     - Set `--mode='pretrain_flow'` and run `python main.py` in terminal
-   - Third, train the Depth stream model using the depth map of VSOD datasets (i.e., DAVIS16 & FBMS & DAVSOD).
-     - Set `--mode='pretrain_depth'` and run `python main.py` in terminal
-
-#### Train the entire network 
-
-Modify the `--spatial_ckpt ` ,  `--flow_ckpt ` ,  `--depth_ckpt `  to the path of pretrained saved checkpoints. 
-
-Last, the training of entire DCTNet is implemented on two NVIDIA TiTAN X GPUs. 
-
-- Set `--mode='train'` 
-- run `CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 main.py` in terminal
+   - The pretrain codes of different streams can be derived from `train.py`. We provided `pretrain_depth.py` and it can also be modified for pretraining other two streams.  What's more, for RGB/spatial stream, we additional use DUTS-TR for pretraining.
 
 ### Testing
 
-1. Download the test data (containing DAVIS, DAVSOD, FBMS, SegTrack-V2, VOS) from [Baidu Driver](https://pan.baidu.com/s/1u1qOWkv5WbovwWKogXwZQw) (PSW: 8uh3) and save it at './dataset/test/*'
-2. Download trained model from [Baidu Driver](https://pan.baidu.com/s/1Z8Sut8bOGOwbUBf0Tmhm4w) (PSW: lze1) and modify the  `model_path` to its saving path in the `main.py`.
-3. Set `--mode='test'` and run `python main.py` in terminal
+1. Download the test data (containing DAVIS16, DAVSOD, FBMS, SegTrack-V2, VOS) from [Baidu Driver](https://pan.baidu.com/s/1u1qOWkv5WbovwWKogXwZQw) (PSW: 8uh3) and save it at './dataset/test/*'
 
-We also provide the version with different training set of video dataset, including DAVIS + FBMS, DAVIS + DAVSOD. 
+2. Download trained model from [Baidu Driver](https://pan.baidu.com/s/1Z8Sut8bOGOwbUBf0Tmhm4w) (PSW: lze1) and modify the  `model_path` to its saving path in the `test.py`.
+
+3. Run `python test.py` in terminal
+
+   
+
+We also provide versions with different training set of video dataset, including DAVIS + FBMS, DAVIS + DAVSOD. 
 
 ### DAVIS + FBMS 
 
@@ -102,3 +92,17 @@ SSAV，PCSA and TENet are trained and finetuned on the DAVIS and DAVSOD. The com
 ## A new RGB-D VSOD dataset (with realistic depth):
 
 We have constructed a new RGB-D VSOD dataset, whose depth is realistic, rather synthesized....
+
+## Citation
+
+Please cite our paper if you find this work useful:
+
+```
+@article{lu2022depth,
+  title={Depth-Cooperated Trimodal Network for Video Salient Object Detection},
+  author={Lu, Yukang and Min, Dingyao and Fu, Keren and Zhao, Qijun},
+  journal={arXiv preprint arXiv:2202.06060},
+  year={2022}
+}
+```
+
