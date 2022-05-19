@@ -16,14 +16,15 @@ This repository provides PyTorch code implementation for DCTNet: Depth-Cooperate
 
 ### Training
 
-#### Pretrain RGB, Flow and Depth streams
-
 1. Download the pre_trained ResNet34 [backbone](https://download.pytorch.org/models/resnet34-333f7ec4.pth) to './model/resnet/pre_train/'.
 2. Download the train dataset (containing DAVIS16, DAVSOD, FBMS and DUTS-TR) from [Baidu Driver](https://pan.baidu.com/s/1mVtAWJS0eC690nPXav2lwg) (PSW: 7yer) and save it at './dataset/train/*'. 
-3. Following the the instruction of [RAFT](https://github.com/princeton-vl/RAFT) to prepare the optical flow and the instruction of [DPT](https://github.com/isl-org/DPT) to prepare the synthetic depth map.
-4. Organize each dataset according to the organization format in the './dataset/train/DAVIS/'.
-5. Our pretraining pipeline consists of three steps:
-   - First, train the RGB stream model using the combination of static SOD dataset (i.e., DUTS)  and VSOD datasets (i.e., DAVIS16 & FBMS & DAVSOD).
+3. Following instructions of [RAFT](https://github.com/princeton-vl/RAFT) to prepare the optical flow and instructions of [DPT](https://github.com/isl-org/DPT) to prepare the synthetic depth map.(Both optical flow map and synthetic depth map are also available from our dataset link)
+4. Download pre_trained RGB, depth and flow stream models from [Baidu Driver](https://pan.baidu.com/s/1HptTP81LXANJ9W0Lu3XCQA) (PSW: 8lux) to './checkpoints/'.
+5. Last, the training of entire DCTNet is implemented on two NVIDIA TiTAN X GPUs. 
+   - run `CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 train.py` in terminal
+
+#### (PS: For pretraining different streams)
+   - The train the RGB stream model using the combination of static SOD dataset (i.e., DUTS)  and VSOD datasets (i.e., DAVIS16 & FBMS & DAVSOD).
      - Set `--mode='pretrain_rgb'` and run `python main.py` in terminal
    - Second, train the Flow stream model using the optical flow map of VSOD datasets (i.e., DAVIS16 & FBMS & DAVSOD).
      - Set `--mode='pretrain_flow'` and run `python main.py` in terminal
@@ -39,7 +40,7 @@ Last, the training of entire DCTNet is implemented on two NVIDIA TiTAN X GPUs.
 - Set `--mode='train'` 
 - run `CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 main.py` in terminal
 
-## Testing
+### Testing
 
 1. Download the test data (containing DAVIS, DAVSOD, FBMS, SegTrack-V2, VOS) from [Baidu Driver](https://pan.baidu.com/s/1u1qOWkv5WbovwWKogXwZQw) (PSW: 8uh3) and save it at './dataset/test/*'
 2. Download trained model from [Baidu Driver](https://pan.baidu.com/s/1Z8Sut8bOGOwbUBf0Tmhm4w) (PSW: lze1) and modify the  `model_path` to its saving path in the `main.py`.
