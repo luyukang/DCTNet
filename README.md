@@ -101,7 +101,7 @@ Please cite our paper if you find this work useful:
 @article{lu2022depth,
   title={Depth-Cooperated Trimodal Network for Video Salient Object Detection},
   author={Lu, Yukang and Min, Dingyao and Fu, Keren and Zhao, Qijun},
-  booktitle={2021 IEEE International Conference on Image Processing (ICIP)},
+  booktitle={2022 IEEE International Conference on Image Processing (ICIP)},
   year={2022},
   organization={IEEE}
 }
