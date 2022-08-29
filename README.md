@@ -36,7 +36,7 @@ This repository provides PyTorch code implementation for DCTNet: Depth-Cooperate
 
    
 
-In addition to the one reported in the paper, we also provide different versions with two more dataset-combos, including DAVIS + FBMS, and DAVIS + DAVSOD. 
+In addition to the one reported in the paper, we also provide different versions with two more training dataset-combos, including DAVIS + FBMS, and DAVIS + DAVSOD. 
 
 ### DAVIS + FBMS 
 
