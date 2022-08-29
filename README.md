@@ -40,7 +40,7 @@ In addition to the one reported in the paper, we also provide different versions
 
 ### DAVIS + FBMS 
 
-Models with "*" are traditional methods, MGAN and FSNet are trained and finetuned on DAVIS and FBMS. The comparison results are below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12h5M639V59eLLEkJ3FcMFA) (PSW: l3q2)
+Models with "*" are traditional methods, MGAN and FSNet are trained and fine-tuned on DAVIS and FBMS. The comparison results are below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12h5M639V59eLLEkJ3FcMFA) (PSW: l3q2)
 
 | Datasets    | Metrics   | MSTM* | STBP* | SFLR* | SCOM* | MGAN      | FSNet | Ours      |
 | ----------- | :-------- | ----- | ----- | ----- | ----- | --------- | ----- | --------- |
@@ -62,7 +62,7 @@ Models with "*" are traditional methods, MGAN and FSNet are trained and finetune
 
 ### DAVIS + DAVSOD 
 
-SSAV，PCSA and TENet are trained and finetuned on DAVIS and DAVSOD. The comparison results are below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12Q3W56g3_F7REiKBsMgWGg) (PSW: srwu)
+SSAV，PCSA and TENet are trained and fine-tuned on DAVIS and DAVSOD. The comparison results are below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12Q3W56g3_F7REiKBsMgWGg) (PSW: srwu)
 
 | Datasets    | Metrics   | MSTM* | STBP* | SFLR* | SCOM* | SSAV  | PCSA  | TENet | Ours      |
 | ----------- | :-------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | --------- |
