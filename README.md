@@ -19,28 +19,28 @@ This repository provides PyTorch code implementation for DCTNet: Depth-Cooperate
 1. Download the pre_trained ResNet34 [backbone](https://download.pytorch.org/models/resnet34-333f7ec4.pth) to './model/resnet/pre_train/'.
 2. Download the train dataset (containing DAVIS16, DAVSOD, FBMS and DUTS-TR) from [Baidu Driver](https://pan.baidu.com/s/1mVtAWJS0eC690nPXav2lwg) (PSW: 7yer) and save it at './dataset/train/*'. 
 3. Following instructions of [RAFT](https://github.com/princeton-vl/RAFT) to prepare the optical flow and instructions of [DPT](https://github.com/isl-org/DPT) to prepare the synthetic depth map.(Both optical flow map and synthetic depth map are also available from our dataset link)
-4. Download pre_trained RGB, depth and flow stream models from [Baidu Driver](https://pan.baidu.com/s/1HptTP81LXANJ9W0Lu3XCQA) (PSW: 8lux) to './checkpoints/'.
+4. Download the pre_trained RGB, depth and flow stream models from [Baidu Driver](https://pan.baidu.com/s/1HptTP81LXANJ9W0Lu3XCQA) (PSW: 8lux) to './checkpoints/'.
 5. The training of entire DCTNet is implemented on two NVIDIA TiTAN X GPUs. 
    - run `CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 train.py` in terminal
 
 #### (PS: For pretraining different streams)
-   - The pretrain codes of different streams can be derived from `train.py`. We provided `pretrain_depth.py` and it can also be modified for pretraining other two streams.  What's more, for RGB/spatial stream, we additional use DUTS-TR for pretraining.
+   - The pretraining code of different streams can be derived from `train.py`. We provide `pretrain_depth.py` and it can also be modified for pretraining the other two streams.  What is more, for RGB/spatial stream, we additionally use DUTS-TR for pretraining.
 
 ### Testing
 
 1. Download the test data (containing DAVIS16, DAVSOD, FBMS, SegTrack-V2, VOS) from [Baidu Driver](https://pan.baidu.com/s/1u1qOWkv5WbovwWKogXwZQw) (PSW: 8uh3) and save it at './dataset/test/*'
 
-2. Download trained model from [Baidu Driver](https://pan.baidu.com/s/1Z8Sut8bOGOwbUBf0Tmhm4w) (PSW: lze1) and modify the  `model_path` to its saving path in the `test.py`.
+2. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/1Z8Sut8bOGOwbUBf0Tmhm4w) (PSW: lze1) and modify the  `model_path` to its saving path in the `test.py`.
 
-3. Run `python test.py` in terminal
+3. Run `python test.py` in the terminal.
 
    
 
-We also provide versions with different training set of video dataset, including DAVIS + FBMS, DAVIS + DAVSOD. 
+In addition to the one reported in the paper, we also provide different versions with two more dataset-combos, including DAVIS + FBMS, and DAVIS + DAVSOD. 
 
 ### DAVIS + FBMS 
 
-Models with "*" are traditional methods, MGAN and FSNet are trained and finetuned on the DAVIS and FBMS. The comparison result is below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12h5M639V59eLLEkJ3FcMFA) (PSW: l3q2)
+Models with "*" are traditional methods, MGAN and FSNet are trained and finetuned on DAVIS and FBMS. The comparison results are below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12h5M639V59eLLEkJ3FcMFA) (PSW: l3q2)
 
 | Datasets    | Metrics   | MSTM* | STBP* | SFLR* | SCOM* | MGAN      | FSNet | Ours      |
 | ----------- | :-------- | ----- | ----- | ----- | ----- | --------- | ----- | --------- |
@@ -62,7 +62,7 @@ Models with "*" are traditional methods, MGAN and FSNet are trained and finetune
 
 ### DAVIS + DAVSOD 
 
-SSAV，PCSA and TENet are trained and finetuned on the DAVIS and DAVSOD. The comparison result is below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12Q3W56g3_F7REiKBsMgWGg) (PSW: srwu)
+SSAV，PCSA and TENet are trained and finetuned on DAVIS and DAVSOD. The comparison results are below. Download the trained model from [Baidu Driver](https://pan.baidu.com/s/12Q3W56g3_F7REiKBsMgWGg) (PSW: srwu)
 
 | Datasets    | Metrics   | MSTM* | STBP* | SFLR* | SCOM* | SSAV  | PCSA  | TENet | Ours      |
 | ----------- | :-------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | --------- |
@@ -89,7 +89,7 @@ SSAV，PCSA and TENet are trained and finetuned on the DAVIS and DAVSOD. The com
 1. The saliency maps can be download from [Baidu Driver](https://pan.baidu.com/s/10i5ADy4iSSwydy04Enf27w) (PSW: wfqc)
 2. Evaluation Toolbox: We use the standard evaluation toolbox from [DAVSOD benchmark](https://github.com/DengPingFan/DAVSOD).
 
-## A new RGB-D VSOD dataset (with realistic depth):
+## A new RGB-D VSOD dataset (with realistic depth, coming soon):
 
 We have constructed a new RGB-D VSOD dataset, whose depth is realistic, rather synthesized....
 
