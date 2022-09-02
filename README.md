@@ -4,6 +4,23 @@
 
 This repository provides PyTorch code implementation for DCTNet: Depth-Cooperated Trimodal Network for Video Salient Object Detection [[Arxiv](https://arxiv.org/pdf/2202.06060.pdf)]
 
+
+<p align="center">
+    <img src="pictures/Fig_overview.png" width="100%"/> <br />
+ <em> 
+     Overview of DCTNet. (a) shows the big picture. (b) and (c) show the details of MAM and RFM, respectively.
+    </em>
+</p>
+
+<p align="center">
+    <img src="pictures/Fig_visual_compare_nodepth.png" width="70%"/> <br />
+ <em> 
+     Effectiveness of leveraging depth to assist VSOD. OF denotes optical flow, and GT represents ground truth. <br />
+    Column (e) and (f) are predictions from our full model (with depth) and its variant (without depth), respectively.
+    </em>
+</p>
+
+
 ## Requirements
 
 - Python 3.7
@@ -98,7 +115,7 @@ We have constructed a new RGB-D VSOD dataset, whose depth is realistic, rather s
 Please cite our paper if you find this work useful:
 
 ```
-@article{lu2022depth,
+@inproceedings{lu2022depth,
   title={Depth-Cooperated Trimodal Network for Video Salient Object Detection},
   author={Lu, Yukang and Min, Dingyao and Fu, Keren and Zhao, Qijun},
   booktitle={2022 IEEE International Conference on Image Processing (ICIP)},
