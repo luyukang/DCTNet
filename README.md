@@ -4,6 +4,7 @@
 
 This repository provides PyTorch code implementation for DCTNet: Depth-Cooperated Trimodal Network for Video Salient Object Detection [[Arxiv](https://arxiv.org/pdf/2202.06060.pdf)]
 
+**News: The new [RDVS](https://github.com/kerenfu/RDVS) dataset,  whose depth of videos is realistic, is coming!!!**
 
 <p align="center">
     <img src="pictures/Fig_overview.png" width="100%"/> <br />
@@ -108,7 +109,7 @@ SSAV，PCSA and TENet are trained and fine-tuned on DAVIS and DAVSOD. The compar
 
 ## A new RGB-D VSOD dataset (with realistic depth, coming now):
 
-We have constructed a new RGB-D VSOD dataset, whose depth is realistic, rather synthesized. See the links for the new [RDVS](https://github.com/kerenfu/RDVS) dataset and the [paper](https://arxiv.org/abs/2310.15482)
+We have constructed a new RGB-D VSOD dataset, whose depth is realistic, rather synthesized. See the links for the new [RDVS](https://github.com/kerenfu/RDVS) dataset and the [paper](https://arxiv.org/abs/2310.15482).
 
 
 ## Citation
